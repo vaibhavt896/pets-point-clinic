@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet's Point Animal Clinic — Where Every Paw Matters | Kanpur</title>
+<meta name="description" content="Pet's Point Animal Clinic — Kanpur's trusted 24/7 veterinary clinic. 6 years of compassionate care, experienced veterinarians, and emergency treatment. Ratanlal Nagar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg-primary:#FDFAF5;--bg-secondary:#F8F4EE;--bg-card:#FFFFFF;--bg-glass:rgba(253,250,245,0.8);--accent-gold:#C9A44E;--accent-gold-light:#E8C87A;--accent-warm:#D4754A;--accent-green:#4A7C59;--accent-cream:#F5EDD6;--text-primary:#2D2A26;--text-secondary:#6B6560;--text-muted:#7A7266;--border-subtle:#E8E2D8;--border-hover:rgba(201,164,78,0.45);--gradient-hero:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(201,164,78,0.1) 0%,transparent 70%);--gradient-card:linear-gradient(135deg,rgba(201,164,78,0.04) 0%,transparent 100%);--gradient-emergency:linear-gradient(135deg,#D4754A 0%,#C9A44E 100%);--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif;--text-hero:clamp(3.5rem,8vw,7rem);--text-h1:clamp(2.5rem,5vw,4.5rem);--text-h2:clamp(1.8rem,3vw,2.8rem);--text-h3:clamp(1.2rem,2vw,1.5rem);--text-body:clamp(1rem,1.5vw,1.1rem);--text-small:0.875rem;--text-micro:0.75rem;--tracking-hero:-0.03em;--tracking-display:-0.02em;--tracking-label:0.15em;--space-xs:0.5rem;--space-sm:1rem;--space-md:2rem;--space-lg:4rem;--space-xl:6rem;--space-2xl:10rem;--container-max:1280px;--container-tight:900px;--container-padding:clamp(1.5rem,5vw,4rem);--radius-sm:8px;--radius-md:16px;--radius-lg:24px;--radius-full:9999px;--section-padding:clamp(4rem,10vw,10rem) 0;--ease-smooth:cubic-bezier(0.25,0.46,0.45,0.94);--ease-bounce:cubic-bezier(0.34,1.56,0.64,1);--ease-sharp:cubic-bezier(0.16,1,0.3,1);--ease-elastic:cubic-bezier(0.68,-0.55,0.265,1.55);--duration-fast:200ms;--duration-base:400ms;--duration-slow:700ms;--duration-crawl:1200ms}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg-primary)}
+body{font-family:var(--font-body);color:var(--text-primary);background:var(--bg-primary);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.15;letter-spacing:var(--tracking-display)}
+.section-label{display:inline-block;font-family:var(--font-body);font-size:var(--text-small);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-label);color:var(--accent-gold);margin-bottom:var(--space-sm)}
+.container{max-width:var(--container-max);margin:0 auto;padding:0 var(--container-padding)}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--font-body);font-weight:600;font-size:var(--text-body);padding:0.875rem 2rem;border-radius:var(--radius-full);border:none;cursor:pointer;transition:all var(--duration-base) var(--ease-smooth);text-decoration:none}
+.btn--primary{background:var(--gradient-emergency);color:#fff}
+.btn--primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,117,74,0.4)}
+.btn--ghost{background:transparent;border:1px solid var(--border-hover);color:var(--text-primary)}
+.btn--ghost:hover{background:rgba(201,164,78,0.1);border-color:var(--accent-gold)}
+.reveal-ready{opacity:0;transform:translateY(32px);transition:opacity var(--duration-slow) var(--ease-sharp),transform var(--duration-slow) var(--ease-sharp)}
+.reveal-ready.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem var(--container-padding);display:flex;align-items:center;justify-content:space-between;transition:all var(--duration-base) var(--ease-smooth);transform:translateY(-100%);animation:navSlideIn 600ms var(--ease-sharp) 200ms forwards}
+@keyframes navSlideIn{to{transform:translateY(0)}}
+.nav--scrolled{background:rgba(253,250,245,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle)}
+.nav__logo{display:flex;align-items:center;gap:0.5rem}
+.nav__paw{font-size:1.5rem}
+.nav__brand{display:flex;flex-direction:column;line-height:1.1}
+.nav__name{font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--text-primary)}
+.nav__sub{font-size:var(--text-micro);color:var(--text-secondary);letter-spacing:var(--tracking-label);text-transform:uppercase}
+.nav__links{display:flex;gap:var(--space-md);list-style:none}
+.nav__links a{font-size:var(--text-small);font-weight:500;color:var(--text-secondary);transition:color var(--duration-fast);position:relative}
+.nav__links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent-gold);transition:width var(--duration-base) var(--ease-smooth)}
+.nav__links a:hover{color:var(--text-primary)}
+.nav__links a:hover::after{width:100%}
+.nav__cta{font-size:var(--text-small);font-weight:600;color:var(--accent-warm);border:1px solid var(--accent-warm);padding:0.5rem 1.25rem;border-radius:var(--radius-full);animation:ctaGlow 2s ease-in-out infinite;transition:all var(--duration-fast)}
+@keyframes ctaGlow{0%,100%{box-shadow:0 0 0 0 rgba(212,117,74,0.4)}50%{box-shadow:0 0 12px 2px rgba(212,117,74,0.25)}}
+.nav__cta:hover{background:var(--accent-warm);color:#fff}
+.nav__hamburger{display:none;background:none;border:none;color:var(--text-primary);font-size:1.5rem;cursor:pointer}
+.mobile-overlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(253,250,245,0.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:var(--space-md);opacity:0;transition:opacity var(--duration-base)}
+.mobile-overlay.active{display:flex;opacity:1}
+.mobile-overlay a{font-family:var(--font-display);font-size:var(--text-h2);color:var(--text-primary);transition:color var(--duration-fast)}
+.mobile-overlay a:hover{color:var(--accent-gold)}
+.mobile-overlay__close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--text-primary);font-size:2rem;cursor:pointer}
+@media(max-width:768px){.nav__links{display:none}.nav__hamburger{display:block}.nav__cta{display:none}}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:var(--space-2xl) var(--container-padding) var(--space-xl)}
+.hero__particles{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero__gradient{position:absolute;inset:0;background:var(--gradient-hero);z-index:1;pointer-events:none}
+.hero__content{position:relative;z-index:2;max-width:720px}
+.hero__badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,164,78,0.1);border:1px solid var(--border-subtle);border-radius:var(--radius-full);padding:0.4rem 1rem;font-size:var(--text-small);color:var(--accent-gold);margin-bottom:var(--space-md);opacity:0;animation:heroFadeUp 700ms var(--ease-sharp) 300ms forwards}
+.hero__badge-dot{width:8px;height:8px;border-radius:50%;background:var(--accent-green);animation:dotPulse 2s ease-in-out infinite}
+@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.hero__headline{font-size:var(--text-hero);letter-spacing:var(--tracking-hero);margin-bottom:var(--space-md);line-height:1.05}
+.hero__line{display:block;opacity:0;animation:heroFadeUp 800ms var(--ease-sharp) forwards}
+.hero__line--1{animation-delay:500ms}
+.hero__line--2{animation-delay:700ms;font-style:italic;color:var(--accent-gold)}
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
+.hero__sub{font-size:var(--text-body);color:var(--text-secondary);max-width:540px;margin-bottom:var(--space-lg);opacity:0;animation:heroFadeUp 700ms var(--ease-sharp) 900ms forwards}
+.hero__stats{display:flex;gap:var(--space-md);margin-bottom:var(--space-lg);opacity:0;animation:heroFadeUp 700ms var(--ease-sharp) 1100ms forwards}
+.hero__stat{text-align:center}
+.hero__stat-number{font-family:var(--font-display);font-size:var(--text-h2);font-weight:700;color:var(--accent-gold)}
+.hero__stat-unit{font-family:var(--font-display);font-size:var(--text-h3);color:var(--accent-gold-light)}
+.hero__stat-label{display:block;font-size:var(--text-micro);color:var(--text-muted);text-transform:uppercase;letter-spacing:var(--tracking-label);margin-top:2px}
+.hero__stat-divider{width:1px;background:var(--border-subtle);align-self:stretch}
+.hero__actions{display:flex;gap:var(--space-sm);flex-wrap:wrap;opacity:0;animation:heroFadeUp 700ms var(--ease-sharp) 1300ms forwards}
+.btn--emergency{position:relative;overflow:visible}
+.btn__pulse{position:absolute;inset:-4px;border-radius:inherit;border:2px solid var(--accent-warm);animation:emergencyPulse 2s ease-out infinite;pointer-events:none}
+@keyframes emergencyPulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.12);opacity:0}}
+.hero__visual{position:absolute;right:5%;bottom:0;height:85%;z-index:1;opacity:0;animation:heroVisualIn 1s var(--ease-sharp) 600ms forwards;display:flex;align-items:flex-end;pointer-events:none}
+@keyframes heroVisualIn{from{opacity:0;transform:translateY(50px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.hero__paw-ring{position:absolute;border-radius:50%;border:1px solid var(--accent-gold);top:50%;left:50%;transform:translate(-50%,-50%);animation:ringPulse 4s ease-out infinite}
+.hero__paw-ring--1{width:400px;height:400px;animation-delay:0s;opacity:.3}
+.hero__paw-ring--2{width:600px;height:600px;animation-delay:1s;opacity:.15}
+.hero__paw-ring--3{width:800px;height:800px;animation-delay:2s;opacity:.07}
+@keyframes ringPulse{0%{transform:translate(-50%,-50%) scale(0.8);opacity:0}20%{opacity:var(--ring-opacity,0.3)}100%{transform:translate(-50%,-50%) scale(1.1);opacity:0}}
+.hero__image{height:100%;max-height:800px;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 0 40px rgba(0,0,0,0.05))}
+.hero__scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:var(--text-muted);font-size:var(--text-micro);text-transform:uppercase;letter-spacing:var(--tracking-label);opacity:0;animation:heroFadeUp 700ms var(--ease-sharp) 1600ms forwards;z-index:10}
+.hero__scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--accent-gold),transparent);animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollLine{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.3)}}
+@media(max-width:1024px){.hero__content{text-align:center;margin:0 auto}.hero__sub{margin-left:auto;margin-right:auto}.hero__stats{justify-content:center}.hero__actions{justify-content:center}}
+@media(max-width:768px){.hero{flex-direction:column;padding-top:8rem;padding-bottom:0;min-height:auto}.hero__visual{position:relative;width:100%;height:380px;right:auto;bottom:auto;opacity:1;animation:none;justify-content:center;margin-top:2rem;pointer-events:none}.hero__paw-ring{display:none}.hero__scroll-hint{display:none}.hero__image{object-position:bottom}}
+
+/* ===== TRUST BAR ===== */
+.trust-bar{background:var(--bg-secondary);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:var(--space-md) var(--container-padding)}
+.trust-bar__container{max-width:var(--container-max);margin:0 auto;display:flex;justify-content:center;align-items:center;gap:var(--space-lg);flex-wrap:wrap}
+.trust-bar__item{display:flex;align-items:center;gap:var(--space-xs);text-align:left}
+.trust-bar__icon{font-size:1.5rem}
+.trust-bar__value{font-family:var(--font-display);font-weight:700;font-size:var(--text-h3);color:var(--text-primary)}
+.trust-bar__label{font-size:var(--text-micro);color:var(--text-muted);text-transform:uppercase;letter-spacing:var(--tracking-label)}
+.trust-bar__sep{width:1px;height:40px;background:var(--border-subtle)}
+@media(max-width:600px){.trust-bar__container{flex-direction:column;gap:var(--space-sm)}.trust-bar__sep{width:40px;height:1px}}
+
+/* ===== SERVICES ===== */
+.services{padding:var(--section-padding);padding-left:var(--container-padding);padding-right:var(--container-padding)}
+.services__header{text-align:center;max-width:var(--container-tight);margin:0 auto var(--space-xl)}
+.services__title{font-size:var(--text-h1);margin-bottom:var(--space-sm)}
+.services__subtitle{color:var(--text-secondary);font-size:var(--text-body)}
+.services__grid{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.service-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:2rem;position:relative;overflow:hidden;cursor:pointer;transition:transform var(--duration-base) var(--ease-smooth),border-color var(--duration-base) var(--ease-smooth),box-shadow var(--duration-base)}
+.service-card:hover{transform:translateY(-8px);border-color:var(--border-hover);box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.service-card__glow{position:absolute;inset:-1px;background:var(--gradient-card);opacity:0;transition:opacity var(--duration-base);pointer-events:none;border-radius:var(--radius-lg)}
+.service-card:hover .service-card__glow{opacity:1}
+.service-card__icon-wrap{width:60px;height:60px;display:flex;align-items:center;justify-content:center;background:rgba(201,164,78,0.08);border-radius:var(--radius-md);margin-bottom:var(--space-sm);font-size:1.8rem;transition:transform var(--duration-base) var(--ease-bounce)}
+.service-card:hover .service-card__icon-wrap{animation:iconBounce 500ms var(--ease-bounce)}
+@keyframes iconBounce{0%{transform:scale(1)}40%{transform:scale(1.3) rotate(-10deg)}100%{transform:scale(1)}}
+.service-card__tag{font-size:var(--text-micro);text-transform:uppercase;letter-spacing:var(--tracking-label);color:var(--accent-gold);margin-bottom:var(--space-xs);font-weight:600}
+.service-card__title{font-family:var(--font-display);font-size:var(--text-h3);margin-bottom:var(--space-xs)}
+.service-card__desc{font-size:var(--text-small);color:var(--text-secondary);line-height:1.6}
+.service-card__arrow{position:absolute;bottom:1.5rem;right:1.5rem;font-size:1.2rem;color:var(--accent-gold);opacity:0;transform:translateX(-8px);transition:all var(--duration-base)}
+.service-card:hover .service-card__arrow{opacity:1;transform:translateX(0)}
+.service-card[data-featured="true"]{grid-column:span 2}
+.service-card[data-accent="warm"]{border-color:rgba(212,117,74,0.3)}
+.service-card[data-accent="warm"] .service-card__tag{color:var(--accent-warm)}
+.service-card[data-accent="warm"] .service-card__icon-wrap{background:rgba(212,117,74,0.1)}
+@media(max-width:900px){.services__grid{grid-template-columns:repeat(2,1fr)}.service-card[data-featured="true"]{grid-column:span 1}}
+@media(max-width:600px){.services__grid{grid-template-columns:1fr}}
+
+/* ===== ABOUT ===== */
+.about{padding:var(--section-padding);padding-left:var(--container-padding);padding-right:var(--container-padding);background:var(--bg-secondary)}
+.about__container{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:var(--space-xl);align-items:center}
+.about__headline{font-size:var(--text-h1);margin-bottom:var(--space-md)}
+.about__headline em{color:var(--accent-gold);font-style:italic}
+.about__body{color:var(--text-secondary);font-size:var(--text-body);margin-bottom:var(--space-md);line-height:1.8}
+.about__pillars{display:flex;flex-direction:column;gap:var(--space-md)}
+.about__pillar{display:flex;gap:var(--space-sm);align-items:flex-start}
+.about__pillar-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
+.about__pillar strong{display:block;font-size:var(--text-body);color:var(--text-primary);margin-bottom:2px}
+.about__pillar p{font-size:var(--text-small);color:var(--text-secondary);margin:0}
+.about__visual{position:relative;border-radius:var(--radius-lg);overflow:visible;display:flex;justify-content:center}
+.about__img-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 20px 60px rgba(45,42,38,0.08);border:1px solid var(--border-subtle);font-size:0;width:90%;max-width:500px;background:var(--bg-card)}
+.about__img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;transition:transform var(--duration-slow) var(--ease-smooth)}
+.about__visual:hover .about__img{transform:scale(1.03)}
+.about__badge-float{position:absolute;bottom:20px;right:0;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-full);padding:0.75rem 1.5rem;display:flex;align-items:center;gap:0.5rem;font-size:var(--text-small);color:var(--text-primary);animation:floatBadge 3s ease-in-out infinite;box-shadow:0 10px 40px rgba(45,42,38,0.12);font-weight:600}
+@keyframes floatBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:900px){.about__container{grid-template-columns:1fr;text-align:center}.about__visual{margin-top:var(--space-lg)}.about__pillars{align-items:center}.about__badge-float{right:auto}}
+
+/* ===== TEAM ===== */
+.team{padding:var(--section-padding);padding-left:var(--container-padding);padding-right:var(--container-padding)}
+.team__header{text-align:center;max-width:var(--container-tight);margin:0 auto var(--space-xl)}
+.team__title{font-size:var(--text-h1);margin-bottom:var(--space-sm)}
+.team__subtitle{color:var(--text-secondary);font-size:var(--text-body)}
+.team__grid{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.team-card{perspective:1000px;height:380px}
+.team-card__inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 600ms var(--ease-smooth)}
+.team-card:hover .team-card__inner{transform:rotateY(180deg)}
+.team-card__front,.team-card__back{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius-lg);border:1px solid var(--border-subtle);background:var(--bg-card);padding:2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.team-card__back{transform:rotateY(180deg);background:linear-gradient(135deg,var(--bg-card) 0%,rgba(201,164,78,0.05) 100%)}
+.team-card__emoji{font-size:4rem;margin-bottom:var(--space-sm)}
+.team-card__name{font-family:var(--font-display);font-size:var(--text-h3);margin-bottom:4px}
+.team-card__role{font-size:var(--text-small);color:var(--accent-gold);margin-bottom:var(--space-xs)}
+.team-card__years{font-size:var(--text-micro);color:var(--text-muted);text-transform:uppercase;letter-spacing:var(--tracking-label)}
+.team-card__speciality{font-size:var(--text-small);color:var(--accent-gold);margin-bottom:var(--space-md)}
+.team-card__quote{font-family:var(--font-display);font-style:italic;font-size:var(--text-body);color:var(--text-secondary);line-height:1.6;max-width:260px}
+.team-card__hint{font-size:var(--text-micro);color:var(--text-muted);margin-top:auto;letter-spacing:var(--tracking-label);text-transform:uppercase}
+@media(max-width:900px){.team__grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.team__grid{grid-template-columns:1fr}.team-card{height:340px}}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials{padding:var(--section-padding);padding-left:var(--container-padding);padding-right:var(--container-padding);background:var(--bg-secondary);overflow:hidden}
+.testimonials__header{text-align:center;max-width:var(--container-tight);margin:0 auto var(--space-xl)}
+.testimonials__title{font-size:var(--text-h1);margin-bottom:var(--space-sm)}
+.marquee-wrap{overflow:hidden;padding:1.5rem 0;margin:0 calc(-1 * var(--container-padding))}
+.marquee{display:flex;gap:1.5rem;animation:marqueeScroll 40s linear infinite;width:max-content}
+.marquee:hover{animation-play-state:paused}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.review-chip{flex-shrink:0;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-full);padding:0.75rem 1.5rem;font-size:var(--text-small);color:var(--text-secondary);white-space:nowrap;transition:border-color var(--duration-base),color var(--duration-base)}
+.review-chip:hover{border-color:var(--border-hover);color:var(--text-primary)}
+.testimonials__featured{max-width:var(--container-tight);margin:var(--space-xl) auto 0;text-align:center}
+.testimonials__quote-mark{font-family:var(--font-display);font-size:6rem;color:var(--accent-gold);line-height:0.5;margin-bottom:var(--space-sm);opacity:0.4}
+.testimonials__quote{font-family:var(--font-display);font-size:var(--text-h2);font-style:italic;color:var(--text-primary);line-height:1.5;margin-bottom:var(--space-md)}
+.testimonials__stars{color:var(--accent-gold);font-size:1.2rem;display:block;margin-bottom:var(--space-xs)}
+.testimonials__source{font-size:var(--text-small);color:var(--text-muted)}
+
+/* ===== EMERGENCY ===== */
+.emergency{background:var(--gradient-emergency);position:relative;overflow:hidden;text-align:center;padding:6rem var(--container-padding)}
+.emergency__bg-pulse{position:absolute;top:50%;left:50%;width:600px;height:600px;border-radius:50%;background:rgba(255,255,255,0.05);transform:translate(-50%,-50%);animation:emergencyBg 3s ease-in-out infinite;pointer-events:none}
+@keyframes emergencyBg{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.15)}}
+.emergency__content{position:relative;z-index:1}
+.emergency__icon{font-size:3rem;margin-bottom:var(--space-sm)}
+.emergency__headline{font-size:var(--text-h1);color:#fff;margin-bottom:var(--space-sm)}
+.emergency__sub{font-size:var(--text-body);color:rgba(255,255,255,0.85);margin-bottom:var(--space-lg);line-height:1.7}
+.emergency__cta{display:inline-flex;align-items:center;gap:0.75rem;background:#fff;color:#0D0D0D;font-weight:700;font-size:1.2rem;padding:1rem 2.5rem;border-radius:var(--radius-full);position:relative;transition:transform var(--duration-fast) var(--ease-bounce);text-decoration:none}
+.emergency__cta:hover{transform:scale(1.05)}
+.emergency__cta-ring{position:absolute;inset:-6px;border:2px solid rgba(255,255,255,0.5);border-radius:var(--radius-full);animation:ctaRing 2s ease-out infinite;pointer-events:none}
+@keyframes ctaRing{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.12);opacity:0}}
+.emergency__address{font-size:var(--text-small);color:rgba(255,255,255,0.7);margin-top:var(--space-md)}
+
+/* ===== CONTACT ===== */
+.contact{padding:var(--section-padding);padding-left:var(--container-padding);padding-right:var(--container-padding)}
+.contact__grid{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:var(--space-xl);align-items:start}
+.contact__heading{font-size:var(--text-h1);margin-bottom:var(--space-lg)}
+.contact__detail{display:flex;gap:var(--space-sm);margin-bottom:var(--space-md)}
+.contact__detail-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
+.contact__detail strong{display:block;font-size:var(--text-body);color:var(--text-primary);margin-bottom:2px}
+.contact__detail p,.contact__detail a{font-size:var(--text-small);color:var(--text-secondary);margin:0;line-height:1.6}
+.contact__detail a:hover{color:var(--accent-gold)}
+.contact__directions{margin-top:var(--space-md)}
+.contact__map iframe{width:100%;height:400px;border:0;border-radius:var(--radius-lg)}
+@media(max-width:768px){.contact__grid{grid-template-columns:1fr}.contact__map{margin-top:var(--space-lg)}}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--bg-secondary);border-top:1px solid var(--border-subtle);padding:var(--space-xl) var(--container-padding) var(--space-md)}
+.footer__inner{max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:var(--space-md);text-align:center}
+.footer__brand{font-family:var(--font-display);font-size:var(--text-h3);color:var(--text-primary)}
+.footer__brand p{font-size:var(--text-small);color:var(--text-secondary);margin-top:4px;font-family:var(--font-body)}
+.footer__links{display:flex;gap:var(--space-md);flex-wrap:wrap;justify-content:center}
+.footer__links a{font-size:var(--text-small);color:var(--text-muted);transition:color var(--duration-fast)}
+.footer__links a:hover{color:var(--accent-gold)}
+.footer__legal{font-size:var(--text-micro);color:var(--text-muted)}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="mainNav">
+<div class="nav__logo"><span class="nav__paw">🐾</span><div class="nav__brand"><span class="nav__name">Pet's Point</span><span class="nav__sub">Animal Clinic</span></div></div>
+<ul class="nav__links"><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#team">Our Doctors</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact</a></li></ul>
+<a href="tel:+919999900000" class="nav__cta">📞 Emergency</a>
+<button class="nav__hamburger" aria-label="Menu" id="hamburgerBtn">☰</button>
+</nav>
+<div class="mobile-overlay" id="mobileNav">
+<button class="mobile-overlay__close" id="mobileClose">✕</button>
+<a href="#services" class="mobile-link">Services</a>
+<a href="#about" class="mobile-link">About</a>
+<a href="#team" class="mobile-link">Our Doctors</a>
+<a href="#reviews" class="mobile-link">Reviews</a>
+<a href="#contact" class="mobile-link">Contact</a>
+<a href="tel:+919999900000" style="color:var(--accent-warm)">📞 Emergency</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+<canvas class="hero__particles" id="pawCanvas"></canvas>
+<div class="hero__gradient"></div>
+<div class="hero__content">
+<div class="hero__badge"><span class="hero__badge-dot"></span><span>Open Now · 24/7 Emergency Care</span></div>
+<h1 class="hero__headline"><span class="hero__line hero__line--1">Where Every</span><span class="hero__line hero__line--2">Paw Matters</span></h1>
+<p class="hero__sub">Kanpur's trusted animal clinic — 6 years of compassionate care,<br>experienced veterinarians, and 24-hour emergency treatment.</p>
+<div class="hero__stats">
+<div class="hero__stat"><span class="hero__stat-number" data-target="4.2">0</span><span class="hero__stat-unit">★</span><span class="hero__stat-label">Rating</span></div>
+<div class="hero__stat-divider"></div>
+<div class="hero__stat"><span class="hero__stat-number" data-target="173">0</span><span class="hero__stat-unit">+</span><span class="hero__stat-label">Reviews</span></div>
+<div class="hero__stat-divider"></div>
+<div class="hero__stat"><span class="hero__stat-number" data-target="6">0</span><span class="hero__stat-unit">yrs</span><span class="hero__stat-label">Experience</span></div>
+</div>
+<div class="hero__actions">
+<a href="tel:+919999900000" class="btn btn--primary btn--emergency"><span class="btn__pulse"></span>📞 Call Emergency</a>
+<a href="#services" class="btn btn--ghost">Explore Services ↓</a>
+</div>
+</div>
+<div class="hero__visual"><div class="hero__paw-ring hero__paw-ring--1"></div><div class="hero__paw-ring hero__paw-ring--2"></div><div class="hero__paw-ring hero__paw-ring--3"></div><img src="Images/Hero — Doctor with pet.png" alt="Doctor with pet" class="hero__image"></div>
+<div class="hero__scroll-hint"><span>scroll</span><div class="hero__scroll-line"></div></div>
+</section>
+
+<!-- ===== TRUST BAR ===== -->
+<section class="trust-bar" data-reveal>
+<div class="trust-bar__container">
+<div class="trust-bar__item" data-reveal data-reveal-delay="0"><span class="trust-bar__icon">⭐</span><div><span class="trust-bar__value">4.2 / 5</span><span class="trust-bar__label">JustDial Rating</span></div></div>
+<div class="trust-bar__sep"></div>
+<div class="trust-bar__item" data-reveal data-reveal-delay="100"><span class="trust-bar__icon">🏥</span><div><span class="trust-bar__value">6 Years</span><span class="trust-bar__label">In Healthcare</span></div></div>
+<div class="trust-bar__sep"></div>
+<div class="trust-bar__item" data-reveal data-reveal-delay="200"><span class="trust-bar__icon">🕐</span><div><span class="trust-bar__value">24 / 7</span><span class="trust-bar__label">Emergency Care</span></div></div>
+<div class="trust-bar__sep"></div>
+<div class="trust-bar__item" data-reveal data-reveal-delay="300"><span class="trust-bar__icon">📍</span><div><span class="trust-bar__value">Kanpur</span><span class="trust-bar__label">Ratanlal Nagar</span></div></div>
+</div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="services">
+<div class="services__header" data-reveal>
+<span class="section-label">What We Offer</span>
+<h2 class="services__title">Comprehensive Care,<br><em style="color:var(--accent-gold)">Under One Roof</em></h2>
+<p class="services__subtitle">From routine wellness to midnight emergencies — every facility your pet needs, right here in Ratanlal Nagar.</p>
+</div>
+<div class="services__grid" id="servicesGrid"></div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+<div class="about__container">
+<div class="about__text" data-reveal>
+<span class="section-label">About The Clinic</span>
+<h2 class="about__headline">Six Years of Healing,<br><em>One Paw at a Time</em></h2>
+<p class="about__body">Nestled in the heart of Ratanlal Nagar, Kanpur, Pet's Point Animal Clinic has been a beacon of trust for pet owners since its founding. Our philosophy is simple: every animal deserves the same compassionate, expert care that you'd want for your own family.</p>
+<p class="about__body">From routine wellness checks to life-saving emergency interventions at 3 AM, our team of experienced veterinarians and empathetic staff are always here. We don't just treat pets — we partner with families in their journey.</p>
+<div class="about__pillars">
+<div class="about__pillar" data-reveal data-reveal-delay="100"><div class="about__pillar-icon">❤️</div><div><strong>Empathetic Doctors</strong><p>Veterinarians who communicate clearly and care deeply.</p></div></div>
+<div class="about__pillar" data-reveal data-reveal-delay="200"><div class="about__pillar-icon">🏥</div><div><strong>All Under One Roof</strong><p>Treatment, diagnostics, food, and grooming — fully equipped.</p></div></div>
+<div class="about__pillar" data-reveal data-reveal-delay="300"><div class="about__pillar-icon">🕐</div><div><strong>24-Hour Emergency</strong><p>No appointment needed in a crisis. We're always open.</p></div></div>
+</div>
+</div>
+<div class="about__visual" data-reveal data-reveal-delay="200">
+<div class="about__img-wrap">
+<img src="Images/Clinic exterior.png" alt="Pet's Point Animal Clinic Exterior" class="about__img">
+</div>
+<div class="about__badge-float"><span class="about__badge-icon">🏆</span><span>Highly Recommended</span></div>
+</div>
+</div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section class="team" id="team">
+<div class="team__header" data-reveal>
+<span class="section-label">Our Doctors</span>
+<h2 class="team__title">Meet the Hearts<br><em style="color:var(--accent-gold)">Behind the Healing</em></h2>
+<p class="team__subtitle">Experienced, empathetic, and always available — our veterinary team is Kanpur's most trusted.</p>
+</div>
+<div class="team__grid" id="teamGrid"></div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials" id="reviews">
+<div class="testimonials__header" data-reveal>
+<span class="section-label">What Pet Parents Say</span>
+<h2 class="testimonials__title">Trusted by<br><em style="color:var(--accent-gold)">173+ Families</em></h2>
+</div>
+<div class="marquee-wrap"><div class="marquee" id="reviewMarquee"></div></div>
+<div class="testimonials__featured" data-reveal>
+<div class="testimonials__quote-mark">"</div>
+<blockquote class="testimonials__quote">Highly recommended animal clinic with well-behaved staff and experienced doctors. The 24-hour emergency service is a lifesaver — literally.</blockquote>
+<div class="testimonials__attribution"><span class="testimonials__stars">⭐⭐⭐⭐⭐</span><span class="testimonials__source">— Verified Review, JustDial · Kanpur</span></div>
+</div>
+</section>
+
+<!-- ===== EMERGENCY ===== -->
+<section class="emergency">
+<div class="emergency__bg-pulse"></div>
+<div class="emergency__content" data-reveal>
+<div class="emergency__icon">🚨</div>
+<h2 class="emergency__headline">Pet Emergency?</h2>
+<p class="emergency__sub">Don't wait. Don't search. Call directly.<br>Our team is awake, equipped, and ready — right now.</p>
+<a href="tel:+919999900000" class="emergency__cta"><span class="emergency__cta-ring"></span>📞 Call Now — We're Open 24/7</a>
+<p class="emergency__address">📍 Shop No-12, Nala Road, Near Shastri Chowk, Ratanlal Nagar, Kanpur - 208022</p>
+</div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+<div class="contact__grid">
+<div class="contact__info" data-reveal>
+<span class="section-label">Find Us</span>
+<h2 class="contact__heading">Visit the Clinic</h2>
+<div class="contact__detail"><span class="contact__detail-icon">📍</span><div><strong>Address</strong><p>Shop No-12, Nala Road, Near Shastri Chowk,<br>Ratanlal Nagar, Kanpur - 208022, UP</p></div></div>
+<div class="contact__detail"><span class="contact__detail-icon">🕐</span><div><strong>Hours</strong><p>Mon – Sun: Open 24 Hours<br>Emergency: Always Available</p></div></div>
+<div class="contact__detail"><span class="contact__detail-icon">📞</span><div><strong>Phone</strong><a href="tel:+919999900000">+91 99999-XXXXX</a></div></div>
+<a href="https://www.google.com/maps/search/Pet's+Point+Animal+Clinic+Kanpur" target="_blank" class="btn btn--ghost contact__directions">Get Directions →</a>
+</div>
+<div class="contact__map" data-reveal data-reveal-delay="200">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14284.5!2d80.35!3d26.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c37f0c9c6b56d%3A0x2c99!2sRatanlal+Nagar%2C+Kanpur!5e0!3m2!1sen!2sin!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+<div class="footer__inner">
+<div class="footer__brand"><span>🐾 Pet's Point Animal Clinic</span><p>Healing with Heart, Every Hour.</p></div>
+<div class="footer__links"><a href="#services">Services</a><a href="#about">About</a><a href="#team">Team</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></div>
+<div class="footer__legal"><p>© 2024 Pet's Point Animal Clinic · Kanpur, Uttar Pradesh</p></div>
+</div>
+</footer>
+
+<script>
+/* ===== DATA ===== */
+const services=[{icon:"🩺",title:"General Consultations",desc:"Comprehensive health examinations and diagnosis for all pets by experienced veterinarians.",tag:"Core Service",featured:true,accent:"gold"},{icon:"🚑",title:"24-Hour Emergency Care",desc:"Round-the-clock critical care with rapid response, any time of day or night.",tag:"Emergency",accent:"warm"},{icon:"💉",title:"Vaccinations",desc:"Full vaccination schedules for dogs, cats, and other pets to prevent disease.",tag:"Preventive",accent:"gold"},{icon:"🔬",title:"Diagnostics & Lab",desc:"In-clinic diagnostic tests, blood work, and pathology for accurate treatment.",tag:"Diagnostic",accent:"gold"},{icon:"🛁",title:"Grooming Services",desc:"Professional grooming, bathing, and coat care keeping your pet clean and healthy.",tag:"Grooming",accent:"gold"},{icon:"🐾",title:"Pet Food & Nutrition",desc:"Curated range of premium pet food and dietary supplements available in-clinic.",tag:"Retail",accent:"gold"}];
+
+const team=[{name:"Dr. Veterinarian",role:"Chief Veterinarian",speciality:"Small Animal Surgery",emoji:"👨‍⚕️",years:"6+ years",quote:"Every animal has a story — our job is to give it a longer one."},{name:"Dr. Physician",role:"Veterinary Physician",speciality:"Internal Medicine & Diagnostics",emoji:"👩‍⚕️",years:"4+ years",quote:"Empathy first, science second — together they heal."},{name:"Dr. Specialist",role:"Emergency Care Lead",speciality:"Critical & Emergency Medicine",emoji:"🧑‍⚕️",years:"5+ years",quote:"In emergencies, calm hands and a clear mind save lives."}];
+
+const reviews=["⭐⭐⭐⭐⭐ \"Highly recommended clinic with well-behaved staff.\"","⭐⭐⭐⭐ \"24-hour emergency — they were there at 2 AM for my dog.\"","⭐⭐⭐⭐⭐ \"Empathetic doctors. My cat recovered fully. Grateful.\"","⭐⭐⭐⭐ \"All facilities under one roof — treatment, food, everything.\"","⭐⭐⭐⭐⭐ \"Best animal clinic in Kanpur. Period.\"","⭐⭐⭐⭐⭐ \"The staff truly cares. You can feel it the moment you walk in.\"","⭐⭐⭐⭐ \"Clean, professional, and affordable. Highly recommend.\""];
+
+/* ===== RENDER SERVICES ===== */
+const sg=document.getElementById('servicesGrid');
+services.forEach((s,i)=>{const c=document.createElement('div');c.className='service-card';c.dataset.accent=s.accent||'gold';if(s.featured)c.dataset.featured='true';c.dataset.reveal='';c.dataset.revealDelay=String(i*80);c.innerHTML=`<div class="service-card__glow"></div><div class="service-card__icon-wrap"><span class="service-card__icon">${s.icon}</span></div><div class="service-card__tag">${s.tag}</div><h3 class="service-card__title">${s.title}</h3><p class="service-card__desc">${s.desc}</p><div class="service-card__arrow">→</div>`;sg.appendChild(c);});
+
+/* ===== RENDER TEAM ===== */
+const tg=document.getElementById('teamGrid');
+team.forEach((t,i)=>{const c=document.createElement('div');c.className='team-card';c.dataset.reveal='';c.dataset.revealDelay=String(i*100);c.innerHTML=`<div class="team-card__inner"><div class="team-card__front"><div class="team-card__emoji">${t.emoji}</div><div class="team-card__name">${t.name}</div><div class="team-card__role">${t.role}</div><div class="team-card__years">${t.years}</div><div class="team-card__hint">Hover to learn more</div></div><div class="team-card__back"><div class="team-card__speciality">${t.speciality}</div><div class="team-card__quote">"${t.quote}"</div></div></div>`;tg.appendChild(c);});
+
+/* ===== RENDER MARQUEE ===== */
+const mq=document.getElementById('reviewMarquee');
+const allReviews=[...reviews,...reviews];
+allReviews.forEach(r=>{const c=document.createElement('div');c.className='review-chip';c.textContent=r;mq.appendChild(c);});
+
+/* ===== PAW PARTICLES ===== */
+class PawParticle{constructor(cv){this.cv=cv;this.reset()}reset(){this.x=Math.random()*this.cv.width;this.y=Math.random()*this.cv.height+this.cv.height;this.size=Math.random()*18+8;this.speed=Math.random()*0.4+0.1;this.opacity=Math.random()*0.12+0.03;this.drift=(Math.random()-0.5)*0.3;this.rotation=Math.random()*Math.PI*2;this.rotationSpeed=(Math.random()-0.5)*0.005}update(){this.y-=this.speed;this.x+=this.drift;this.rotation+=this.rotationSpeed;if(this.y<-50)this.reset()}draw(ctx){ctx.save();ctx.globalAlpha=this.opacity;ctx.translate(this.x,this.y);ctx.rotate(this.rotation);ctx.font=`${this.size}px serif`;ctx.fillText('🐾',-this.size/2,this.size/2);ctx.restore()}}
+!function(){const cv=document.getElementById('pawCanvas'),ctx=cv.getContext('2d'),ps=Array.from({length:25},()=>new PawParticle(cv));function resize(){cv.width=window.innerWidth;cv.height=window.innerHeight}resize();window.addEventListener('resize',resize);(function animate(){ctx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw(ctx)});requestAnimationFrame(animate)})()}();
+
+/* ===== COUNTER ANIMATION ===== */
+function animateCounter(el){const target=parseFloat(el.dataset.target);const isDecimal=target%1!==0;const duration=2000;const start=performance.now();function update(now){const progress=Math.min((now-start)/duration,1);const eased=1-Math.pow(1-progress,3);const current=target*eased;el.textContent=isDecimal?current.toFixed(1):Math.floor(current);if(progress<1)requestAnimationFrame(update)}requestAnimationFrame(update)}
+const statsObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.hero__stat-number').forEach(animateCounter);statsObs.unobserve(e.target)}})},{threshold:0.5});
+const statsEl=document.querySelector('.hero__stats');if(statsEl)statsObs.observe(statsEl);
+
+/* ===== SCROLL REVEAL ===== */
+!function(){const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const d=e.target.dataset.revealDelay||0;setTimeout(()=>e.target.classList.add('is-visible'),d);obs.unobserve(e.target)}})},{threshold:0.15,rootMargin:'0px 0px -50px 0px'});document.querySelectorAll('[data-reveal]').forEach(el=>{el.classList.add('reveal-ready');obs.observe(el)})}();
+
+/* ===== NAV SCROLL ===== */
+!function(){const nav=document.getElementById('mainNav');let ticking=false;window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(()=>{nav.classList.toggle('nav--scrolled',window.scrollY>80);ticking=false});ticking=true}});const hamburger=document.getElementById('hamburgerBtn'),mobileNav=document.getElementById('mobileNav'),mobileClose=document.getElementById('mobileClose');hamburger.addEventListener('click',()=>mobileNav.classList.add('active'));mobileClose.addEventListener('click',()=>mobileNav.classList.remove('active'));document.querySelectorAll('.mobile-link').forEach(a=>a.addEventListener('click',()=>mobileNav.classList.remove('active')))}();
+</script>
+</body>
+</html>
