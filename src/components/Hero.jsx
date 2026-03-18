@@ -325,37 +325,40 @@ const Hero = () => {
           <h1 className="hero-headline">
             <div className="hero-headline__line">Where Every</div>
             <div className="hero-headline__line">
-              Paw <span className="hero-headline--gold-italic">{typedText}</span>
+              Paw <span className="hero-headline--gold-italic">{typedText}</span>.
               <span className="hero-cursor"></span>
             </div>
           </h1>
 
           {/* Subheading - 950ms */}
           <p className="hero-subhead">
-            Kanpur's Premier Veterinary Hospital. Advanced medicine delivered with profound compassion. Open 6:30 AM to 10:30 PM, with 24/7 emergency care.
+            Kanpur's most trusted veterinary care — led by a doctor with 15 years of experience. When your pet needs help, we are already here.
           </p>
 
           {/* Stats Bar - 1100ms */}
           <div className="hero-stats-bar">
-            <Counter target="4.2" label="Rating" durationMs={1800} />
+            <Counter target="4.2" unit="★" label="RATING" durationMs={1800} />
             <div className="hero-stats-bar__divider"></div>
-            <Counter target="173" unit="+" label="Reviews" durationMs={2000} />
+            <Counter target="173" unit="+" label="REVIEWS" durationMs={2000} />
             <div className="hero-stats-bar__divider"></div>
-            <Counter target="15" unit="yrs" label="Experience" durationMs={1500} />
+            <Counter target="15" unit="yrs" label="EXPERIENCE" durationMs={1500} />
           </div>
 
-          {/* CTAs - 1300ms */}
-          <div className="hero-ctas">
-            <a href="tel:+918299386977" className="hero-btn hero-btn--primary">
+          {/* Action Buttons - 1250ms */}
+          <div className="hero-actions">
+            <a 
+              href="tel:+918299386977" 
+              className="hero-btn"
+            >
               <span className="hero-btn__ring"></span>
-              Call Doctor
+              📞 Call Emergency
             </a>
             <a 
               href="https://wa.me/918299386977?text=Hi%2C%20I%27d%20like%20to%20book%20an%20clinic%20visit." 
               target="_blank" rel="noopener noreferrer" 
               className="hero-btn hero-btn--secondary"
             >
-              Book Appointment
+              Book Appointment →
             </a>
           </div>
         </div>
