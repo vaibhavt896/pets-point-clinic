@@ -343,7 +343,7 @@
 .hero-image-wrap {
   position: absolute;
   bottom: 0;
-  left: 8%;          /* Pushing the doctor further right to create space */
+  left: 9.5%;        /* Additional nudge right for perfect breathing room */
   width: 125%;       
   height: 95%;       
   max-width: none;

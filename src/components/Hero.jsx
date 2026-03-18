@@ -345,10 +345,10 @@ const Hero = () => {
           </div>
 
           {/* Action Buttons - 1250ms */}
-          <div className="hero-actions">
+          <div className="hero-ctas">
             <a 
               href="tel:+918299386977" 
-              className="hero-btn"
+              className="hero-btn hero-btn--primary"
             >
               <span className="hero-btn__ring"></span>
               📞 Call Emergency
