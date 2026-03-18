@@ -1,11 +1,10 @@
-/* Each service now has an `iconId` instead of an emoji.
-   The SVG rendering happens in the Services component. */
+/* Each service has an `iconId` corresponding to the set in Services.jsx. */
 
 export const services = [
   {
     iconId: "stethoscope",
     title: "General Consultations",
-    desc: "Comprehensive health examinations and diagnosis for all pets by experienced veterinarians.",
+    desc: "A thorough examination by a doctor who takes time. Because a rushed diagnosis helps no one.",
     tag: "Core Service",
     featured: true,
     accent: "gold"
@@ -13,56 +12,56 @@ export const services = [
   {
     iconId: "ambulance",
     title: "24-Hour Emergency Care",
-    desc: "Round-the-clock critical care with rapid response, any time of day or night.",
+    desc: "3 AM, Sunday morning, a holiday — it doesn't matter. If your pet needs help, we answer.",
     tag: "Emergency",
     accent: "warm"
   },
   {
     iconId: "syringe",
     title: "Vaccinations",
-    desc: "Full vaccination schedules for dogs, cats, and other pets to prevent disease.",
+    desc: "Scheduled, on time, and explained clearly. The simplest way to give your pet a longer life.",
     tag: "Preventive",
     accent: "gold"
   },
   {
     iconId: "microscope",
     title: "Diagnostics & Lab",
-    desc: "In-clinic diagnostic tests, blood work, and pathology for accurate treatment.",
+    desc: "In-clinic blood work and pathology. Answers fast, so treatment can start sooner.",
     tag: "Diagnostic",
     accent: "gold"
   },
   {
     iconId: "scalpel",
     title: "Surgery",
-    desc: "Safe surgical procedures from spaying and neutering to advanced orthopedic operations.",
+    desc: "Routine to advanced procedures, performed with precision and full post-operative care.",
     tag: "Specialty",
     accent: "warm"
   },
   {
     iconId: "tooth",
     title: "Dental Care",
-    desc: "Professional dental scaling, polishing, and oral health assessments for pets.",
+    desc: "Scaling, polishing, and oral health assessments. Dental health is overall health.",
     tag: "Specialty",
     accent: "gold"
   },
   {
     iconId: "skin",
     title: "Dermatology",
-    desc: "Diagnosis and treatment of skin conditions, allergies, and coat disorders.",
+    desc: "Skin conditions, allergies, coat disorders — diagnosed and treated with the right protocol.",
     tag: "Specialty",
     accent: "gold"
   },
   {
     iconId: "scissors",
     title: "Grooming Services",
-    desc: "Professional grooming, bathing, and coat care keeping your pet clean and healthy.",
+    desc: "Professional grooming that goes beyond aesthetics. A clean coat is a healthy coat.",
     tag: "Grooming",
     accent: "gold"
   },
   {
     iconId: "bowl",
     title: "Pet Food & Nutrition",
-    desc: "Curated range of premium pet food and dietary supplements available in-clinic.",
+    desc: "Premium food and dietary supplements — curated and available in-clinic. Ask us what your pet actually needs.",
     tag: "Retail",
     accent: "gold"
   }

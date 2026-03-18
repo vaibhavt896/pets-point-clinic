@@ -4,7 +4,7 @@ import { services } from '../data/services';
 /* ── Professional SVG Icon Set ─────────────────────────────── */
 const icons = {
   stethoscope: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4.8 2.65l-.6 3.5a3 3 0 0 0 3 3.5h1.6a3 3 0 0 0 3-3.5l-.6-3.5" />
       <path d="M6 2v2" />
       <path d="M10 2v2" />
@@ -13,7 +13,7 @@ const icons = {
     </svg>
   ),
   ambulance: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M10 10H6" />
       <path d="M8 8v4" />
       <path d="M1 16V8a2 2 0 0 1 2-2h11v11H3a2 2 0 0 1-2-2z" />
@@ -23,7 +23,7 @@ const icons = {
     </svg>
   ),
   syringe: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="m18 2 4 4" />
       <path d="m17 7 3-3" />
       <path d="M19 9 8.7 19.3a2.1 2.1 0 0 1-2.97 0l-1.03-1.03a2.1 2.1 0 0 1 0-2.97L15 5" />
@@ -33,7 +33,7 @@ const icons = {
     </svg>
   ),
   microscope: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M6 18h8" />
       <path d="M3 22h18" />
       <path d="M14 22a7 7 0 1 0 0-14h-1" />
@@ -43,7 +43,7 @@ const icons = {
     </svg>
   ),
   scalpel: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M5.11 19.89l1.42-1.42" />
       <path d="M20.07 3.93a2 2 0 0 0-2.83 0L6.34 14.83a2 2 0 0 0 0 2.84l.71.71a2 2 0 0 0 2.84 0L20.07 6.76a2 2 0 0 0 0-2.83z" />
       <path d="m3.7 20.3 1.8-1.8" />
@@ -51,12 +51,12 @@ const icons = {
     </svg>
   ),
   tooth: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 5.5C12 3.01 9.99 1 7.5 1S3 3.01 3 5.5c0 3.52 2.67 5.32 3.66 8.15.38 1.1.63 2.32.85 3.58.38 2.2 2 3.77 4.49 3.77s4.11-1.57 4.49-3.77c.22-1.26.47-2.48.85-3.58C18.33 10.82 21 9.02 21 5.5 21 3.01 18.99 1 16.5 1S12 3.01 12 5.5z" />
     </svg>
   ),
   skin: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" />
       <path d="M8 14s1.5 2 4 2 4-2 4-2" />
       <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="3" />
@@ -64,7 +64,7 @@ const icons = {
     </svg>
   ),
   scissors: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="6" cy="6" r="3" />
       <circle cx="6" cy="18" r="3" />
       <line x1="20" y1="4" x2="8.12" y2="15.88" />
@@ -73,7 +73,7 @@ const icons = {
     </svg>
   ),
   bowl: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M2 12h20" />
       <path d="M4 12c0 4.42 3.58 8 8 8s8-3.58 8-8" />
       <path d="M12 4c-1 0-2.5.5-2.5 2S11 8 12 8s2.5-.5 2.5-2S13 4 12 4z" />
@@ -117,13 +117,13 @@ const Services = () => {
   return (
     <section className="services" id="services">
       <div className="services__header" data-reveal>
-        <span className="section-label">What We Offer</span>
+        <span className="section-label">WHAT WE OFFER</span>
         <h2 className="services__title">
-          Comprehensive Care,<br />
-          <em style={{ color: 'var(--accent-gold)' }}>Under One Roof</em>
+          Everything Your Pet Needs.<br />
+          <em style={{ color: 'var(--accent-gold)' }}>All in One Place.</em>
         </h2>
         <p className="services__subtitle">
-          From routine wellness to midnight emergencies — every facility your pet needs, right here in Ratanlal Nagar.
+          From a first vaccination to a midnight emergency — every service your pet could ever need is here, under one roof, in the heart of Ratanlal Nagar.
         </p>
       </div>
       <div className="services__grid">

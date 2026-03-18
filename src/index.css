@@ -109,48 +109,108 @@ h1, h2, h3, h4 {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   font-family: var(--font-body);
   font-weight: 600;
   font-size: var(--text-body);
-  padding: 0.875rem 2rem;
+  padding: 0.875rem 2.25rem;
   border-radius: var(--radius-full);
   border: none;
   cursor: pointer;
-  transition: all var(--duration-base) var(--ease-smooth);
   text-decoration: none;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0); /* Hardware accel */
 }
 
+.btn:active {
+  transform: scale(0.96) translateY(0);
+}
+
+.btn svg {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* Stunning Primary Button at Rest */
 .btn--primary {
   background: var(--gradient-emergency);
   color: #fff;
+  box-shadow: 
+    0 8px 24px -4px rgba(212, 117, 74, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(212, 117, 74, 0.8);
+  overflow: hidden; /* Shine needs this, but we will fix the hero pulse in App.css */
 }
 
 .btn--primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(212, 117, 74, 0.4);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 
+    0 16px 32px rgba(212, 117, 74, 0.4), 
+    0 4px 10px rgba(212, 117, 74, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
 }
 
+/* Sweeping Shine Animation */
+.btn--primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  animation: premiumShine 4s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes premiumShine {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
+}
+
+/* Beautiful Ghost Button */
 .btn--ghost {
-  background: transparent;
-  border: 1px solid var(--border-hover);
+  background: rgba(201, 164, 78, 0.03);
   color: var(--text-primary);
+  border: 1px solid rgba(201, 164, 78, 0.3);
+  box-shadow: 0 4px 12px rgba(201, 164, 78, 0.05);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn--ghost:hover {
-  background: rgba(201, 164, 78, 0.1);
+  transform: translateY(-3px) scale(1.02);
+  background: rgba(253, 250, 245, 0.8);
   border-color: var(--accent-gold);
+  box-shadow: 
+    0 12px 28px rgba(201, 164, 78, 0.15),
+    inset 0 0 0 1px rgba(201, 164, 78, 0.4);
+  color: var(--accent-gold);
 }
 
 .reveal-ready {
   opacity: 0;
   transform: translateY(32px);
-  transition: opacity var(--duration-slow) var(--ease-sharp), transform var(--duration-slow) var(--ease-sharp);
+  filter: blur(8px);
+  transition: opacity var(--duration-slow) var(--ease-smooth),
+              transform var(--duration-slow) var(--ease-smooth),
+              filter var(--duration-slow) var(--ease-smooth);
 }
 
 .reveal-ready.is-visible {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0px);
 }
 
 @media (prefers-reduced-motion: reduce) {

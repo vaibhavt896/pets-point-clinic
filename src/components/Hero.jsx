@@ -1,21 +1,34 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import doctorImg from '../assets/Images/Hero — Doctor with pet.png';
+import '../Hero.css';
 
-const Counter = ({ target, unit, label }) => {
+// Counter Component for Stats
+const Counter = ({ target, unit, label, durationMs }) => {
   const countRef = useRef(null);
 
   useEffect(() => {
+    const el = countRef.current;
+    if (!el) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          const el = countRef.current;
           const targetValue = parseFloat(target);
           const isDecimal = targetValue % 1 !== 0;
-          const duration = 2000;
+
+          if (prefersReducedMotion) {
+            el.textContent = target;
+            observer.unobserve(el);
+            return;
+          }
+
           const start = performance.now();
 
           const update = (now) => {
-            const progress = Math.min((now - start) / duration, 1);
+            const progress = Math.min((now - start) / durationMs, 1);
+            // Cubic out easing
             const eased = 1 - Math.pow(1 - progress, 3);
             const current = targetValue * eased;
             el.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
@@ -25,48 +38,181 @@ const Counter = ({ target, unit, label }) => {
           observer.unobserve(el);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 }
     );
 
-    if (countRef.current) observer.observe(countRef.current);
+    observer.observe(el);
     return () => observer.disconnect();
-  }, [target]);
+  }, [target, durationMs]);
 
   return (
-    <div className="hero__stat">
-      <span className="hero__stat-number" ref={countRef}>0</span>
-      <span className="hero__stat-unit">{unit}</span>
-      <span className="hero__stat-label">{label}</span>
+    <div className="hero-stat">
+      <span className="hero-stat__number">
+        <span ref={countRef}>0</span>{unit}
+      </span>
+      <span className="hero-stat__label">{label}</span>
     </div>
   );
 };
 
 const Hero = () => {
+  const heroRef = useRef(null);
   const canvasRef = useRef(null);
+  
+  // Parallax Refs
+  const imageRef = useRef(null);
+  const ringsRef = useRef([]);
+  const badgeRightRef = useRef(null);
+  const badgeLeftRef = useRef(null);
+  const [scrollOpacity, setScrollOpacity] = useState(1);
 
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // --- 1. TYPEWRITER EFFECT (Last word only) ---
+  const typingWord = "Matters.";
+  
   useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isDeleting && charIndex < typingWord.length) {
+        setCharIndex(c => c + 1);
+      } else if (isDeleting && charIndex > 0) {
+        setCharIndex(c => c - 1);
+      } else if (!isDeleting && charIndex === typingWord.length) {
+        setTimeout(() => setIsDeleting(true), 3000); // 3s pause
+      } else if (isDeleting && charIndex === 0) {
+        setIsDeleting(false); // Restart loop immediately
+      }
+    }, isDeleting ? 40 : 120);
+    
+    return () => clearTimeout(timer);
+  }, [charIndex, isDeleting, typingWord.length]);
+
+  const typedText = typingWord.substring(0, charIndex);
+
+  // --- 2. PARALLAX SYSTEM ---
+  useEffect(() => {
+    // Disable on touch devices or screens strictly <= 900px as per spec
+    if (window.matchMedia('(hover: none)').matches || window.innerWidth <= 900) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const hero = heroRef.current;
+    if (!hero) return;
+
+    // Targets
+    let targetX = 0;
+    let targetY = 0;
+    
+    // Current positions (for lerp)
+    let curX = 0;
+    let curY = 0;
+
+    const handleMouseMove = (e) => {
+      const rect = hero.getBoundingClientRect();
+      // Normalize mouse coordinates to -1 to +1 relative to hero center
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      targetX = (e.clientX - rect.left - centerX) / centerX;
+      targetY = (e.clientY - rect.top - centerY) / centerY;
+    };
+
+    const handleMouseLeave = () => {
+      // Spring back to center
+      targetX = 0;
+      targetY = 0;
+    };
+
+    hero.addEventListener('mousemove', handleMouseMove, { passive: true });
+    hero.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+
+    let animationId;
+    
+    // Lerp function: current + (target - current) * alpha
+    const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
+
+    const renderLoop = () => {
+      if (!heroRef.current) {
+        cancelAnimationFrame(animationId);
+        return;
+      }
+      
+      // Update scroll indicator opacity (fade out completely by 100px)
+      const currentScrollY = window.scrollY;
+      const newOpacity = Math.max(0, 1 - currentScrollY / 100);
+      setScrollOpacity(newOpacity);
+
+      // 4% lerp smoothing per frame
+      curX = lerp(curX, targetX, 0.04);
+      curY = lerp(curY, targetY, 0.04);
+
+      // Apply specific movement multipliers
+      // Image: moves opposite (pulls away)
+      if (imageRef.current) {
+        imageRef.current.style.transform = `translate(${curX * -10}px, ${curY * -10}px)`;
+      }
+
+      // Rings: move with mouse (depth layers)
+      ringsRef.current.forEach((ring, idx) => {
+        if (!ring) return;
+        const multiplier = (idx + 1) * 3; // 3px, 6px, 9px
+        ring.style.transform = `translate(${curX * multiplier}px, ${curY * multiplier}px)`;
+      });
+
+      // Badges
+      if (badgeLeftRef.current) { // Rating badge
+        badgeLeftRef.current.style.transform = `translate(${curX * 8}px, ${curY * 5}px)`;
+      }
+      if (badgeRightRef.current) { // Available badge
+        badgeRightRef.current.style.transform = `translate(${curX * -6}px, ${curY * -4}px)`;
+      }
+
+      animationId = requestAnimationFrame(renderLoop);
+    };
+
+    renderLoop();
+
+    return () => {
+      hero.removeEventListener('mousemove', handleMouseMove);
+      hero.removeEventListener('mouseleave', handleMouseLeave);
+      cancelAnimationFrame(animationId);
+    };
+  }, []);
+
+  // --- 3. PAW PARTICLES CANVAS ---
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
+    let animationId;
+    let isVisible = true;
+
+    // Stop animation when tab is not visible
+    const handleVisibilityChange = () => {
+      isVisible = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     class PawParticle {
       constructor(cv) {
         this.cv = cv;
-        this.reset();
+        this.reset(true);
       }
-      reset() {
+      reset(randomizeY = false) {
         this.x = Math.random() * this.cv.width;
-        this.y = Math.random() * this.cv.height + this.cv.height;
-        this.size = Math.random() * 18 + 8;
+        this.y = randomizeY ? Math.random() * this.cv.height : this.cv.height + 20;
+        this.size = Math.random() * 14 + 8; // 8-22px
         this.speed = Math.random() * 0.4 + 0.1;
-        this.opacity = Math.random() * 0.12 + 0.03;
-        this.drift = (Math.random() - 0.5) * 0.3;
+        this.opacity = (Math.random() * 0.10 + 0.03); // 3-13%
+        this.driftScale = (Math.random() - 0.5) * 0.25; // wander ±0.25px/frame
+        this.offset = Math.random() * 1000;
         this.rotation = Math.random() * Math.PI * 2;
         this.rotationSpeed = (Math.random() - 0.5) * 0.005;
       }
       update() {
         this.y -= this.speed;
-        this.x += this.drift;
+        this.x += Math.sin((Date.now() + this.offset) / 1000) * this.driftScale;
         this.rotation += this.rotationSpeed;
         if (this.y < -50) this.reset();
       }
@@ -76,85 +222,157 @@ const Hero = () => {
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
         ctx.font = `${this.size}px serif`;
+        // Color applied via fillStyle in animate loop to save state changes, or here:
+        ctx.fillStyle = "#B8912A";
         ctx.fillText('🐾', -this.size / 2, this.size / 2);
         ctx.restore();
       }
     }
 
-    const particles = Array.from({ length: 25 }, () => new PawParticle(canvas));
+    let particles = [];
+    const initParticles = () => {
+      const isMobile = window.innerWidth <= 600;
+      const count = isMobile ? 12 : 28;
+      particles = Array.from({ length: count }, () => new PawParticle(canvas));
+    };
 
     const resize = () => {
+      // Use logical pixel scaling if needed, but standard is fine
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      initParticles();
     };
     resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
 
-    let animationId;
+    // Entrance delay 1800ms
+    let startTime = Date.now();
+    
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p) => {
-        p.update();
-        p.draw(ctx);
-      });
+      if (isVisible) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Only draw/update after 1800ms
+        if (Date.now() - startTime > 1800) {
+           particles.forEach((p) => {
+            p.update();
+            p.draw(ctx);
+          });
+        }
+      }
       animationId = requestAnimationFrame(animate);
     };
     animate();
 
     return () => {
       window.removeEventListener('resize', resize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       cancelAnimationFrame(animationId);
     };
   }, []);
 
+  // Set up the ring refs array
+  const setRingRef = (index) => (el) => {
+    ringsRef.current[index] = el;
+  };
+
   return (
-    <section className="hero" id="hero">
-      <canvas className="hero__particles" ref={canvasRef}></canvas>
-      <div className="hero__gradient"></div>
-      <div className="hero__content">
-        <div className="hero__badge">
-          <span className="hero__badge-dot"></span>
-          <span>Open Now · 24/7 Emergency Care</span>
-        </div>
-        <h1 className="hero__headline">
-          <span className="hero__line hero__line--1">Where Every</span>
-          <span className="hero__line hero__line--2">Paw Matters</span>
-        </h1>
-        <p className="hero__sub">
-          Your pet's health, our lifetime promise. 15 years of compassionate
-          veterinary care, right here in Kanpur — open 24 hours, every day.
-        </p>
-        <div className="hero__stats">
-          <Counter target="4.2" unit="★" label="Rating" />
-          <div className="hero__stat-divider"></div>
-          <Counter target="173" unit="+" label="Reviews" />
-          <div className="hero__stat-divider"></div>
-          <Counter target="15" unit="yrs" label="Experience" />
-        </div>
-        <div className="hero__actions">
-          <a href="tel:+918299386977" className="btn btn--primary btn--emergency">
-            <span className="btn__pulse"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg> Call Emergency
-          </a>
-          <a
-            href="https://wa.me/918299386977?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Pet%27s%20Point%20Animal%20Clinic."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn--book"
-          >
-            📅 Book Appointment
-          </a>
+    <section className="hero" id="hero" ref={heroRef}>
+      
+      {/* 6. Background Layer Stack */}
+      <div className="h-layer h-layer--base"></div>
+      <div className="h-layer h-layer--ambient"></div>
+      <div className="h-layer h-layer--grain"></div>
+      <div className="h-layer h-layer--rule"></div>
+      <canvas className="h-layer h-layer--canvas" ref={canvasRef} aria-hidden="true"></canvas>
+
+      {/* Full Bleed Visuals (Right Half of Viewport) */}
+      <div className="hero__fullscreen-visuals">
+        <div className="hero-visual-stack">
+          {/* Concentric Rings */}
+          <div className="hero-parallax-layer" ref={setRingRef(0)}><div className="hero-ring hero-ring--1"></div></div>
+          <div className="hero-parallax-layer" ref={setRingRef(1)}><div className="hero-ring hero-ring--2"></div></div>
+          <div className="hero-parallax-layer" ref={setRingRef(2)}><div className="hero-ring hero-ring--3"></div></div>
+
+          {/* Doctor Image - 550ms */}
+          <div className="hero-parallax-layer" ref={imageRef}>
+            <div className="hero-image-wrap">
+              <div className="hero-image-float">
+                <img 
+                  src={doctorImg} 
+                  alt="Expert Veterinary Doctor" 
+                  className="hero-image" 
+                  loading="eager" 
+                  fetchpriority="high" 
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="hero__visual">
-        <div className="hero__paw-ring hero__paw-ring--1"></div>
-        <div className="hero__paw-ring hero__paw-ring--2"></div>
-        <div className="hero__paw-ring hero__paw-ring--3"></div>
-        <img src={doctorImg} alt="Doctor with pet" className="hero__image" />
+
+      <div className="hero__container">
+        
+        {/* Left Column - Copy */}
+        <div className="hero__copy">
+          {/* Status Badge - 250ms */}
+          <div className="hero-status-badge">
+            <span className="hero-status-badge__dot"></span>
+            <span className="hero-status-badge__text">Open Now · 6:30 AM – 10:30 PM · 24/7 Emergency</span>
+          </div>
+
+          {/* Typewriter Headline */}
+          <h1 className="hero-headline">
+            <div className="hero-headline__line">Where Every</div>
+            <div className="hero-headline__line">
+              Paw <span className="hero-headline--gold-italic">{typedText}</span>
+              <span className="hero-cursor"></span>
+            </div>
+          </h1>
+
+          {/* Subheading - 950ms */}
+          <p className="hero-subhead">
+            Kanpur's Premier Veterinary Hospital. Advanced medicine delivered with profound compassion. Open 6:30 AM to 10:30 PM, with 24/7 emergency care.
+          </p>
+
+          {/* Stats Bar - 1100ms */}
+          <div className="hero-stats-bar">
+            <Counter target="4.2" label="Rating" durationMs={1800} />
+            <div className="hero-stats-bar__divider"></div>
+            <Counter target="173" unit="+" label="Reviews" durationMs={2000} />
+            <div className="hero-stats-bar__divider"></div>
+            <Counter target="15" unit="yrs" label="Experience" durationMs={1500} />
+          </div>
+
+          {/* CTAs - 1300ms */}
+          <div className="hero-ctas">
+            <a href="tel:+918299386977" className="hero-btn hero-btn--primary">
+              <span className="hero-btn__ring"></span>
+              Call Doctor
+            </a>
+            <a 
+              href="https://wa.me/918299386977?text=Hi%2C%20I%27d%20like%20to%20book%20an%20clinic%20visit." 
+              target="_blank" rel="noopener noreferrer" 
+              className="hero-btn hero-btn--secondary"
+            >
+              Book Appointment
+            </a>
+          </div>
+        </div>
+
+        {/* Right Column Spacer - structural balance for text */}
+        <div className="hero__visual-spacer"></div>
+
       </div>
-      <div className="hero__scroll-hint">
-        <span>scroll</span>
-        <div className="hero__scroll-line"></div>
+
+      {/* Scroll Indicator - 2200ms */}
+      <div className="hero-scroll" style={{ opacity: scrollOpacity }}>
+        <span className="hero-scroll__text">SCROLL</span>
+        <div className="hero-scroll__track">
+           <div className="hero-scroll__thumb"></div>
+        </div>
       </div>
+
     </section>
   );
 };

@@ -5,6 +5,7 @@ import TrustBar from './components/TrustBar';
 import Services from './components/Services';
 import About from './components/About';
 import Team from './components/Team';
+import Gallery from './components/Gallery';
 import Testimonials from './components/Testimonials';
 import Emergency from './components/Emergency';
 import Contact from './components/Contact';
@@ -25,10 +26,12 @@ function App() {
         <Services />
         <About />
         <Team />
+        <Gallery />
         <Testimonials />
         <Emergency />
         <Contact />
       </main>
+
       <Footer />
       <WhatsAppButton />
     </div>

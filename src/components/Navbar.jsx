@@ -5,11 +5,18 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 60);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -32,13 +39,22 @@ const Navbar = () => {
           <li><a href="#reviews">Reviews</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="tel:+918299386977" className="nav__cta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight:'4px'}}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg> Emergency</a>
-        <button className="nav__hamburger" aria-label="Menu" onClick={toggleMobileMenu}>
+        <a href="tel:+918299386977" className="nav__emergency-pulse">
+          <span className="nav__emergency-pulse-ring"></span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight:'4px'}}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg> 
+          Emergency
+        </a>
+        <button 
+          className="nav__hamburger" 
+          aria-label="Toggle Menu" 
+          aria-expanded={isMobileMenuOpen}
+          onClick={toggleMobileMenu}
+        >
           ☰
         </button>
       </nav>
 
-      <div className={`mobile-overlay ${isMobileMenuOpen ? 'active' : ''}`} id="mobileNav">
+      <div className={`mobile-overlay ${isMobileMenuOpen ? 'active' : ''}`} id="mobileNav" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
         <button className="mobile-overlay__close" onClick={toggleMobileMenu}>✕</button>
         <a href="#services" className="mobile-link" onClick={toggleMobileMenu}>Services</a>
         <a href="#about" className="mobile-link" onClick={toggleMobileMenu}>About</a>

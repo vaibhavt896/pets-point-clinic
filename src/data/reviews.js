@@ -1,9 +1,9 @@
 export const reviews = [
-  "⭐⭐⭐⭐⭐ \"Highly recommended clinic with well-behaved staff.\"",
-  "⭐⭐⭐⭐ \"24-hour emergency — they were there at 2 AM for my dog.\"",
-  "⭐⭐⭐⭐⭐ \"Empathetic doctors. My cat recovered fully. Grateful.\"",
-  "⭐⭐⭐⭐ \"All facilities under one roof — treatment, food, everything.\"",
   "⭐⭐⭐⭐⭐ \"Best animal clinic in Kanpur. Period.\"",
-  "⭐⭐⭐⭐⭐ \"The staff truly cares. You can feel it the moment you walk in.\"",
-  "⭐⭐⭐⭐ \"Clean, professional, and affordable. Highly recommend.\""
+  "⭐⭐⭐⭐ \"At 2 AM they answered. I'll never forget that.\"",
+  "⭐⭐⭐⭐⭐ \"Everything under one roof. Saves so much time.\"",
+  "⭐⭐⭐⭐ \"Empathetic doctor. My cat recovered completely.\"",
+  "⭐⭐⭐⭐⭐ \"They treat your pet like family, not a patient number.\"",
+  "⭐⭐⭐⭐ \"The staff calmed my dog down before I even sat down.\"",
+  "⭐⭐⭐⭐⭐ \"Never going anywhere else in Kanpur. Trusted completely.\""
 ];
