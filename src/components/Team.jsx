@@ -1,11 +1,19 @@
 import React from 'react';
 import { team } from '../data/team';
 
-const TeamCard = ({ name, role, speciality, emoji, years, quote, index }) => (
+const TeamCard = ({ name, role, speciality, image, emoji, years, quote, index }) => (
   <div className="team-card" data-reveal data-reveal-delay={index * 100}>
     <div className="team-card__inner">
       <div className="team-card__front">
-        <div className="team-card__emoji">{emoji}</div>
+        <div className="team-card__visual">
+          {image ? (
+            <div className="team-card__image-container">
+              <img src={image} alt={name} className="team-card__image" />
+            </div>
+          ) : (
+            <div className="team-card__emoji">{emoji}</div>
+          )}
+        </div>
         <div className="team-card__name">{name}</div>
         <div className="team-card__role">{role}</div>
         <div className="team-card__years">{years}</div>

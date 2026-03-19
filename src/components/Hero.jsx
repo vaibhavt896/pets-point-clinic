@@ -70,20 +70,30 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   // --- 1. TYPEWRITER EFFECT (Last word only) ---
-  const typingWord = "Matters.";
+  const typingWord = "Matters";
   
   useEffect(() => {
+    // Determine the next delay
+    let timeoutDelay = isDeleting ? 35 : 100 + Math.random() * 80;
+
+    // Slow down at the very end of the word for a "buttery" feel
+    if (!isDeleting && charIndex >= typingWord.length - 2 && charIndex < typingWord.length) {
+      timeoutDelay += 150;
+    }
+
     const timer = setTimeout(() => {
       if (!isDeleting && charIndex < typingWord.length) {
         setCharIndex(c => c + 1);
       } else if (isDeleting && charIndex > 0) {
         setCharIndex(c => c - 1);
       } else if (!isDeleting && charIndex === typingWord.length) {
-        setTimeout(() => setIsDeleting(true), 3000); // 3s pause
+        // Longer emotional pause when finished
+        setTimeout(() => setIsDeleting(true), 3500); 
       } else if (isDeleting && charIndex === 0) {
-        setIsDeleting(false); // Restart loop immediately
+        // Quick pause before restarting
+        setTimeout(() => setIsDeleting(false), 800);
       }
-    }, isDeleting ? 40 : 120);
+    }, timeoutDelay);
     
     return () => clearTimeout(timer);
   }, [charIndex, isDeleting, typingWord.length]);

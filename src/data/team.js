@@ -3,6 +3,7 @@ export const team = [
     name: "Dr. R.A. Singh",
     role: "Chief Veterinarian",
     speciality: "Surgery, Vaccination & Complete Pet Care",
+    image: "/Dr.R.A.Singh(Dr.Robin).png",
     emoji: "👨‍⚕️",
     years: "Experienced",
     quote: "Every animal has a story — our job is to give it a longer one."
