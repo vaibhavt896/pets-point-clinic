@@ -61,7 +61,7 @@ const Gallery = () => {
           </p>
         </div>
 
-        <div className="gallery-masonry" data-reveal data-reveal-delay="100">
+        <div className="gallery-masonry">
           {displayedImages.map((src, index) => (
             <div 
               key={index} 

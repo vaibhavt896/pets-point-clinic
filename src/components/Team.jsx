@@ -1,5 +1,6 @@
-import React from 'react';
 import { team } from '../data/team';
+
+const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches;
 
 const TeamCard = ({ name, role, speciality, image, emoji, years, quote, index }) => (
   <div className="team-card" data-reveal data-reveal-delay={index * 100}>
@@ -8,7 +9,7 @@ const TeamCard = ({ name, role, speciality, image, emoji, years, quote, index })
         <div className="team-card__visual">
           {image ? (
             <div className="team-card__image-container">
-              <img src={image} alt={name} className="team-card__image" />
+              <img src={image} alt={name} className="team-card__image" loading="lazy" />
             </div>
           ) : (
             <div className="team-card__emoji">{emoji}</div>
@@ -17,7 +18,7 @@ const TeamCard = ({ name, role, speciality, image, emoji, years, quote, index })
         <div className="team-card__name">{name}</div>
         <div className="team-card__role">{role}</div>
         <div className="team-card__years">{years}</div>
-        <div className="team-card__hint">Hover to learn more</div>
+        {!isTouchDevice && <div className="team-card__hint">Hover to learn more</div>}
       </div>
       <div className="team-card__back">
         <div className="team-card__speciality">{speciality}</div>
